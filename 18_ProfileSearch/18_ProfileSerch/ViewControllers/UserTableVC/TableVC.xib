@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TableVC" customModule="_8_ProfileSerch" customModuleProvider="target">
             <connections>
+                <outlet property="searchField" destination="9lo-hL-y6W" id="oNf-6x-XnZ"/>
                 <outlet property="spiner" destination="XPe-bI-PUH" id="LZv-ob-3XD"/>
                 <outlet property="tableView" destination="mM6-OO-5Lt" id="XTp-7n-qt3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -21,22 +22,30 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mM6-OO-5Lt">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="98" width="414" height="764"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="XPe-bI-PUH">
                     <rect key="frame" x="171" y="438" width="20" height="20"/>
                     <color key="color" systemColor="tintColor"/>
                 </activityIndicatorView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Поиск" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9lo-hL-y6W">
+                    <rect key="frame" x="5" y="54" width="404" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mM6-OO-5Lt" secondAttribute="bottom" id="3Mi-Dn-CX0"/>
+                <constraint firstItem="mM6-OO-5Lt" firstAttribute="top" secondItem="9lo-hL-y6W" secondAttribute="bottom" constant="10" id="4G4-mB-Mgn"/>
                 <constraint firstItem="XPe-bI-PUH" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="HpZ-Qc-jgt"/>
+                <constraint firstItem="9lo-hL-y6W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="MTf-r5-Tdn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mM6-OO-5Lt" secondAttribute="trailing" id="MVJ-1x-KVh"/>
                 <constraint firstItem="mM6-OO-5Lt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="WIf-MG-ghr"/>
-                <constraint firstItem="mM6-OO-5Lt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="gkR-Du-T6t"/>
+                <constraint firstItem="9lo-hL-y6W" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="Yv6-RR-uOI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9lo-hL-y6W" secondAttribute="trailing" constant="5" id="as2-U2-rRq"/>
                 <constraint firstItem="XPe-bI-PUH" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="m0c-33-gzg"/>
             </constraints>
             <point key="canvasLocation" x="-39" y="-11"/>

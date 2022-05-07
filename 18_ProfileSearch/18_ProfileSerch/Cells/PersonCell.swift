@@ -21,7 +21,8 @@ class PersonCell: UITableViewCell {
         avatarImage.layer.borderWidth = 1
         avatarImage.layer.borderColor = UIColor.black.cgColor
         nameLabel.text = profile.displayName
-        
+        selectionStyle = .none
+
         var cityString = ""
         
         if let country = profile.country {

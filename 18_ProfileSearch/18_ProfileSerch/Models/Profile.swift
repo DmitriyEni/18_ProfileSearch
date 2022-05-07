@@ -34,7 +34,11 @@ class Profile: Mappable {
     var description: String?
     var teamName: String?
     var avatarUrl: String?
-    
+    var roles: [String]?
+    var teamLogo: String?
+    var tg: String?
+    var vk: String?
+
     required init?(map: Map) {
         mapping(map: map)
     }
@@ -46,5 +50,10 @@ class Profile: Mappable {
         teamName        <- map["teamName"]
         avatarUrl       <- map["profilePictureUrl"]
         description     <- map["description"]
+        roles           <- map["roles"]
+        teamLogo        <- map["teamLogo"]
+        tg              <- map["tg"]
+        vk              <- map["vk"]
+
     }
 }

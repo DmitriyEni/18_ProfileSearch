@@ -10,8 +10,9 @@ import UIKit
 class TableVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    @IBOutlet weak var spiner: UIActivityIndicatorView!
+    @IBOutlet weak var spiner:UIActivityIndicatorView!
+    @IBOutlet weak var searchField: UITextField!
+    var timer: Timer?
     var profiles = [Profile]()
     
     override func viewDidLoad() {
@@ -20,15 +21,32 @@ class TableVC: UIViewController {
         tableView.delegate = self
         let nib = UINib(nibName: String(describing: PersonCell.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: String(describing: PersonCell.self))
-        spiner.startAnimating()
         
-        NetworkManager.getUserList(name: nil) { profiles in
+        searchField.addTarget(self, action: #selector(textDidChange), for: .allEvents)
+        
+        spiner.startAnimating()
+        NetworkManager.getUserList { profiles in
             self.profiles = profiles
             self.spiner.stopAnimating()
             self.tableView.reloadData()
         } failureBlock: {
             self.spiner.stopAnimating()
         }
+    }
+    
+    @objc func textDidChange() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+            self.spiner.startAnimating()
+            NetworkManager.getUserList(name: self.searchField.text) { profiles in
+                self.profiles = profiles
+                self.spiner.stopAnimating()
+                self.tableView.reloadData()
+            } failureBlock: {
+                self.spiner.stopAnimating()
+            }
+        })
+        
     }
 }
 
@@ -42,6 +60,13 @@ extension TableVC: UITableViewDataSource {
         cell.setupCell(profile: profiles[indexPath.row])
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let userProfile = profiles[indexPath.row]
+        let infoVC = InfoVC(nibName: String(describing: InfoVC.self), bundle: nil)
+        infoVC.profile = userProfile
+        navigationController?.pushViewController(infoVC, animated: true)
     }
 }
 
